@@ -120,8 +120,8 @@ GitHub Actions builds the Spring API and publishes container images to GHCR.
 
 | Image | Notes |
 | --- | --- |
-| `ghcr.io/abhiudayg/else-api:latest` | Latest release tag |
-| `ghcr.io/abhiudayg/else-api:edge` | Continuous build from `main` |
+| `ghcr.io/abhiudayg/else:latest` | Latest release tag |
+| `ghcr.io/abhiudayg/else:edge` | Continuous build from `main` |
 
 Details: [`docs/CI.md`](docs/CI.md) · SnapDeploy: [`deploy/snapdeploy.md`](deploy/snapdeploy.md) · Apple Container: [`deploy/ghcr.md`](deploy/ghcr.md).
 

@@ -8,12 +8,12 @@ RUN mvn -B -DskipTests package \
  && cp "$JAR" /src/else-api.jar
 
 FROM eclipse-temurin:21-jre-jammy
-# Required by GitHub Packages to link this image to the else repository
-# (owner namespace must match: abhiudayg).
-LABEL org.opencontainers.image.source https://github.com/abhiudayg/else
-LABEL org.opencontainers.image.title else-api
-LABEL org.opencontainers.image.description "ELSE Spring Boot API"
-LABEL org.opencontainers.image.licenses MIT
+# Links GHCR package to https://github.com/abhiudayg/else (same owner namespace).
+# GitHub docs also accept space-separated form; key=value is the BuildKit-preferred equivalent.
+LABEL org.opencontainers.image.source="https://github.com/abhiudayg/else"
+LABEL org.opencontainers.image.title="else"
+LABEL org.opencontainers.image.description="ELSE Spring Boot API"
+LABEL org.opencontainers.image.licenses="MIT"
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends curl \

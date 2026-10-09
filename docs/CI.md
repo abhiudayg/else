@@ -9,9 +9,9 @@
 ## Image
 
 ```text
-ghcr.io/abhiudayg/else-api:latest   # release tags
-ghcr.io/abhiudayg/else-api:edge     # main branch
-ghcr.io/abhiudayg/else-api:0.1.0    # semver from v0.1.0
+ghcr.io/abhiudayg/else:latest   # release tags
+ghcr.io/abhiudayg/else:edge     # main branch
+ghcr.io/abhiudayg/else:0.1.0    # semver from v0.1.0
 ```
 
 Built for `linux/amd64` and `linux/arm64`. Local Apple Container builds: see [`deploy/ghcr.md`](../deploy/ghcr.md).

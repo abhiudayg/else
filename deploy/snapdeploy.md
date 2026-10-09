@@ -24,9 +24,9 @@ Health probe: SnapDeploy uses Spring Boot **`/actuator/health`** (also available
 
 ## Option B — Public GHCR image
 
-After making `ghcr.io/abhiudayg/else-api` **public**:
+After making `ghcr.io/abhiudayg/else` **public**:
 
-1. Deploy → **Docker image** → `ghcr.io/abhiudayg/else-api:edge` (or `:latest`).
+1. Deploy → **Docker image** → `ghcr.io/abhiudayg/else:edge` (or `:latest`).
 2. Set container port to **8081**.
 3. Public images run on **x86-64** on SnapDeploy — our multi-arch GHCR tags include `amd64`.
 
