@@ -1,0 +1,38 @@
+# SnapDeploy free tier: Small 512 MB, ARM64, ephemeral disk, auto-sleep.
+spring:
+  datasource:
+    url: jdbc:h2:file:/opt/else/data/else;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+server:
+  # Overridden at runtime by --server.port=${PORT}
+  port: ${PORT:8081}
+  address: 0.0.0.0
+
+management:
+  endpoint:
+    health:
+      show-details: never
+  endpoints:
+    web:
+      exposure:
+        include: health
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+else:
+  cors:
+    allowed-origins: "*"

@@ -1,0 +1,29 @@
+# Always Free OCI co-host with Slip (same VM). No paid DB / no external LLM.
+spring:
+  datasource:
+    url: jdbc:h2:file:/opt/else/data/else;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+server:
+  port: ${PORT:8081}
+  address: 0.0.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+else:
+  cors:
+    allowed-origins: "*"

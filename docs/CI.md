@@ -26,3 +26,9 @@ git push origin v0.1.0
 Or **Actions → Publish → Run workflow**.
 
 Package visibility: set `else-api` to public under GitHub → Packages if anonymous pulls are needed.
+
+## SnapDeploy
+
+Production hosting for the API: [`deploy/snapdeploy.md`](../deploy/snapdeploy.md).
+
+Connect `abhiudayg/else` with root directory `backend`. SnapDeploy rebuilds on push (counts toward free deploy quota).
