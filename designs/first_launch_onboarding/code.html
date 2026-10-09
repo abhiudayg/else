@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-fixed-variant": "#7c2e00", "on-primary-fixed-variant": "#004493", "inverse-primary": "#005bc1", "outline": "#8b90a0", "surface-container-highest": "#353535", "secondary-fixed": "#dbe1ff", "surface-container-high": "#2a2a2a", "on-secondary-container": "#cdd7ff", "secondary-container": "#0053db", "tertiary": "#ffb595", "on-primary-container": "#00285c", "error-container": "#93000a", "on-secondary-fixed": "#00174b", "on-error": "#690005", "tertiary-fixed-dim": "#ffb595", "on-tertiary-container": "#4c1a00", "inverse-surface": "#e2e2e2", "on-surface-variant": "#c1c6d7", "tertiary-fixed": "#ffdbcc", "tertiary-container": "#ef6719", "primary-fixed": "#d8e2ff", "surface-tint": "#adc6ff", "secondary": "#b4c5ff", "on-primary-fixed": "#001a41", "surface-dim": "#131313", "outline-variant": "#414755", "primary": "#adc6ff", "surface": "#131313", "primary-fixed-dim": "#adc6ff", "on-surface": "#e2e2e2", "primary-container": "#4b8eff", "surface-container-lowest": "#0e0e0e", "on-tertiary-fixed": "#351000", "on-background": "#e2e2e2", "on-error-container": "#ffdad6", "on-primary": "#002e69", "error": "#ffb4ab", "background": "#131313", "on-tertiary": "#571e00", "secondary-fixed-dim": "#b4c5ff", "surface-bright": "#393939", "surface-variant": "#353535", "inverse-on-surface": "#303030", "surface-container": "#1f1f1f", "surface-container-low": "#1b1b1b", "on-secondary": "#002a78", "on-secondary-fixed-variant": "#003ea8" }, borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-md": "1rem", "space-xl": "2rem", "margin-mobile": "1rem", "gutter-mobile": "0.75rem", "margin": "1.25rem", "space-lg": "1.5rem" }, fontFamily: { "caption-bold": ["Inter"], "body-bold": ["Inter"], "body-md": ["Inter"], "label-caps": ["Inter"], "verdict-xl": ["Inter"], "headline-md": ["Inter"], "body-lg": ["Inter"], "headline-lg": ["Inter"], "caption": ["Inter"], "title": ["Inter"], "verdict-xl-mobile": ["Inter"], "headline-sm": ["Inter"] }, fontSize: { "caption-bold": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-bold": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "body-md": ["15px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "label-caps": ["11px", { "lineHeight": "13px", "letterSpacing": "0.06em", "fontWeight": "600" }], "verdict-xl": ["56px", { "lineHeight": "60px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-md": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-lg": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "headline-lg": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "title": ["20px", { "lineHeight": "25px", "letterSpacing": "-0.008em", "fontWeight": "600" }], "verdict-xl-mobile": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-sm": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-background text-on-surface font-body-md text-body-md min-h-screen relative flex flex-col selection:bg-primary-container selection:text-on-primary-container"><main class="flex-1 w-full bg-surface pt-safe pb-safe"><div class="flex flex-col w-full relative overflow-hidden select-none">
+<!-- Dynamic Island Enclosure Simulation -->
+<div class="w-full flex justify-center items-center py-2 relative z-30">
+<div class="bg-surface-container-lowest px-4 py-2 rounded-full flex items-center gap-3 transition-all duration-500 ease-out shadow-2xl" id="dynamic-island">
+<div class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[15px]">sensors</span>
+<span class="font-caption-bold text-caption-bold text-on-surface tracking-wide">ELSE Optical Engine</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full uppercase tracking-wider">Ready</span>
+</div>
+</div>
+<!-- Ambient Optical Refraction Background Elements -->
+<div class="relative w-full px-margin-mobile flex flex-col items-center">
+<!-- Diffused Ambient Specular Nodes -->
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-72 h-72 bg-gradient-to-br from-primary-container/20 via-primary/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-48 -right-20 w-64 h-64 bg-secondary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Central Wordmark Cluster -->
+<div class="pt-6 pb-4 flex flex-col items-center text-center relative z-10 w-full">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high/80 backdrop-blur-md mb-6 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">spark</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Instant Decision Copilot</span>
+</div>
+<!-- Hero Wordmark: ELSE -->
+<h1 class="font-verdict-xl-mobile text-verdict-xl-mobile text-on-surface tracking-tight font-bold mb-3">
+        ELSE
+      </h1>
+<!-- Twin Main Headline Structure -->
+<div class="space-y-1">
+<p class="font-headline-md text-headline-md text-on-surface tracking-tight font-semibold">
+          Point at anything.
+        </p>
+<p class="font-headline-md text-headline-md text-primary font-semibold tracking-tight">
+          Get a second opinion.
+        </p>
+</div>
+<!-- Supporting Understated Philosophy -->
+<p class="font-body-md text-body-md text-on-surface-variant mt-3 max-w-[280px] leading-relaxed">
+        See it. Ask it. Know what to do.
+      </p>
+</div>
+<!-- Live Preview Shimmer Specimen (Underlying evidence layer) -->
+<div class="w-full relative rounded-2xl overflow-hidden my-4 bg-surface-container-lowest/80 backdrop-blur-2xl shadow-xl">
+<!-- Media placeholder visual layer showing realistic everyday scenario -->
+<div class="relative w-full h-56 bg-surface-container-high flex flex-col justify-between p-4">
+<img class="absolute inset-0 w-full h-full object-cover opacity-45" data-alt="Photorealistic smartphone camera viewfinder feed capturing a subtle complex electronic circuit breaker panel with wiring labels in natural ambient workshop lighting. Atmospheric depth of field, high-contrast clarity, neutral Cupertino color grading, crisp specular glass sheen, ultra premium industrial minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE5HU0mJ5gsPIVWsQf-z8BzTOH-IrDtJ4DAC-c_r5AHvStcTiFc_X-tPw8RWD8LwJML69WYR5-Le9GAdhmmsNv00OEngfn1rSUjGDwOgjwFz9-a6EBL8mp0c6HPpspZvKvnRZN-fAYowxM_102kwwqBFj42BDTRmUWXV9MCue8dkSYd67fs7GkzNCwP6dmYsBCt-yk7kzuCVErSPRpIgHKmJ9ZZYED3CMfx61VaufUbGMw__vRn-tl"/>
+<!-- Scrim gradient ensuring text legibility over optics -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<!-- Specular Optical Reticle -->
+<div class="relative z-10 flex justify-between items-start">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest/70 backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-caps text-label-caps text-on-surface">Spatial Reticle Active</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant bg-surface-container-highest/50 backdrop-blur-md px-2 py-0.5 rounded-full">4K • 60FPS</span>
+</div>
+<!-- Target Lock Reticle in Center -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-24 h-24 rounded-full flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border border-primary/30 animate-pulse"></div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-lg shadow-primary"></div>
+<div class="absolute -top-3 font-label-caps text-label-caps text-primary tracking-wider uppercase bg-surface-container-lowest/80 px-2 py-0.5 rounded-full">Target Lock</div>
+</div>
+</div>
+<!-- Realtime Diagnostic Chip -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-2 bg-surface-container-highest/80 backdrop-blur-md px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-[16px]">visibility</span>
+<span class="font-caption-bold text-caption-bold text-on-surface">No cloud storage required</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Private</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Glass Permission & Capabilities Panel -->
+<div class="w-full bg-surface-container/70 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl relative my-2">
+<!-- Top Specular Grabber/Accent -->
+<div class="w-9 h-1 bg-surface-variant rounded-full mx-auto mb-4 opacity-70"></div>
+<div class="flex items-start gap-3.5">
+<div class="w-11 h-11 rounded-full bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">photo_camera</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-body-bold text-body-bold text-on-surface">Zero Setup Required</span>
+<span class="font-label-caps text-label-caps text-primary bg-primary-container/20 px-2 py-0.5 rounded-full">Instant</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-snug">
+            ELSE needs your camera to see what you're asking about.
+          </p>
+</div>
+</div>
+<!-- Grouped Sensory Assurance Points -->
+<div class="mt-4 pt-4 bg-surface-container-low/60 rounded-xl p-3 flex flex-col gap-2.5">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="font-caption text-caption text-on-surface">Processed on-device wherever supported</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">no_accounts</span>
+<span class="font-caption text-caption text-on-surface">Zero account, zero passwords, zero tracking</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">bolt</span>
+<span class="font-caption text-caption text-on-surface">Verdicts arrive in milliseconds</span>
+</div>
+</div>
+</div>
+<!-- Pinned Optical Action Hub -->
+<div class="w-full pt-3 pb-6 flex flex-col items-center gap-3">
+<!-- Primary Glass Action Trigger -->
+<button class="w-full h-[52px] rounded-full bg-primary-container text-on-primary font-body-bold text-body-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform duration-150 shadow-lg shadow-primary-container/25 cursor-pointer" id="action-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Try ELSE</span>
+</button>
+<!-- Secondary Soft System Capsule -->
+<button class="w-full h-[48px] rounded-full bg-surface-container-high/80 backdrop-blur-xl text-on-surface font-body-bold text-body-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform duration-150 cursor-pointer shadow-sm" id="action-secondary">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">center_focus_strong</span>
+<span class="text-on-surface">Continue with Camera</span>
+</button>
+<!-- Micro Privacy Caption -->
+<p class="font-caption text-caption text-outline text-center mt-1">
+        Apple Camera Sandboxed Access • Strict Local Session
+      </p>
+</div>
+</div>
+<!-- Interactive Feedback Logic -->
+<script>
+    (function() {
+      const primaryBtn = document.getElementById('action-primary');
+      const secondaryBtn = document.getElementById('action-secondary');
+      const island = document.getElementById('dynamic-island');
+
+      function triggerHapticAndFocus(label) {
+        if (island) {
+          island.classList.add('scale-105', 'bg-surface-container-high');
+          const statusText = island.querySelector('.font-caption-bold');
+          if (statusText) {
+            const original = statusText.textContent;
+            statusText.textContent = label;
+            setTimeout(() => {
+              statusText.textContent = original;
+              island.classList.remove('scale-105', 'bg-surface-container-high');
+            }, 1400);
+          }
+        }
+      }
+
+      if (primaryBtn) {
+        primaryBtn.addEventListener('click', () => {
+          triggerHapticAndFocus('Launching Visual Feed…');
+        });
+      }
+
+      if (secondaryBtn) {
+        secondaryBtn.addEventListener('click', () => {
+          triggerHapticAndFocus('Requesting Camera Stream…');
+        });
+      }
+    })();
+  </script>
+</div></main></body></html>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+  <defs>
+    <linearGradient id="elseBlueShift" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#007AFF"/>
+      <stop offset="100%" stop-color="#5856D6"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <!-- Background subtle vignette circle -->
+  <rect width="120" height="120" rx="32" fill="#0A0A0C"/>
+  <rect width="120" height="120" rx="32" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  
+  <!-- Optical Primary Lens (Observation) -->
+  <circle cx="52" cy="60" r="26" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-dasharray="120 30" opacity="0.95"/>
+  <circle cx="52" cy="60" r="3.5" fill="#FFFFFF"/>
+  
+  <!-- Offset Secondary Lens (Second Opinion / Alternate Angle) -->
+  <circle cx="68" cy="60" r="26" stroke="url(#elseBlueShift)" stroke-width="3" stroke-linecap="round" stroke-dasharray="115 35" transform="rotate(180 68 60)" filter="url(#softGlow)"/>
+  <circle cx="68" cy="60" r="3.5" fill="#007AFF"/>
+  
+  <!-- Subtle optical intersection point -->
+  <ellipse cx="60" cy="60" rx="4" ry="12" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1.5" stroke-dasharray="2 3"/>
+</svg>
