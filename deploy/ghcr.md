@@ -26,3 +26,13 @@ container run --rm -p 8081:8081 ghcr.io/abhiudayg/else-api:edge
 # or: docker run --rm -p 8081:8081 ghcr.io/abhiudayg/else-api:edge
 curl -fsS http://127.0.0.1:8081/api/v1/health
 ```
+
+## Link package ↔ repository
+
+Dockerfile includes:
+
+```dockerfile
+LABEL org.opencontainers.image.source https://github.com/abhiudayg/else
+```
+
+Owner namespace must match (`abhiudayg`). After the next image push, GitHub can auto-link the package to the `else` repo from this label.
