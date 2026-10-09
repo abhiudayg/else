@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: ${ELSE_DB_URL}
+    username: ${ELSE_DB_USER}
+    password: ${ELSE_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  h2:
+    console:
+      enabled: false
