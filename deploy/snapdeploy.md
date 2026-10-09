@@ -50,3 +50,26 @@ Enable cloud assist in the app only when ready: UserDefaults `else.optical.prefe
 - Container **sleeps** when idle; first request may take ~60s to wake.
 - Disk is **ephemeral** (H2 under `/opt/else/data`) — fine for optional sync demos; use a SnapDeploy DB add-on or Neon for durable data.
 - Stay on **Small** + free hours unless you need Always-On ($12/mo).
+
+## Option C — API / agent
+
+1. Open https://snapdeploy.dev and create an API key with scope **deploy**.
+2. Export (do not commit):
+
+```bash
+export SNAPDEPLOY_API_KEY="sd_pat_…"
+```
+
+3. Deploy from GitHub (uses repo-root Dockerfile):
+
+```bash
+./scripts/snapdeploy-deploy.sh github
+```
+
+Or from the public GHCR image (faster):
+
+```bash
+./scripts/snapdeploy-deploy.sh image
+```
+
+Paste the token in chat (or set the env var) and ask to deploy again.

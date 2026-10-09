@@ -1,0 +1,10 @@
+.git
+.github
+ios
+designs
+docs
+deploy
+**/target
+**/.data
+**/.DS_Store
+**/*.md
