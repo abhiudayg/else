@@ -1,0 +1,45 @@
+name: ELSE
+options:
+  bundleIdPrefix: com.aeswibon
+  deploymentTarget:
+    iOS: "27.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+settings:
+  base:
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: "9HSMVVUMVX"
+    SWIFT_VERSION: "6.0"
+configs:
+  Debug: debug
+  Release: release
+
+targets:
+  ELSE:
+    type: application
+    platform: iOS
+    sources:
+      - path: ELSE
+        excludes:
+          - Resources/**
+    resources:
+      - path: ELSE/Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aeswibon.else
+        INFOPLIST_FILE: ELSE/Info.plist
+        CODE_SIGN_ENTITLEMENTS: ELSE/ELSE.entitlements
+        PRODUCT_NAME: ELSE
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: false
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"
+        SUPPORTS_MACCATALYST: false
+        IPHONEOS_DEPLOYMENT_TARGET: "27.0"
+        SWIFT_STRICT_CONCURRENCY: complete
+    dependencies:
+      - sdk: AppIntents.framework
+      - sdk: AuthenticationServices.framework
+    scheme:
+      testTargets: []
