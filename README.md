@@ -113,6 +113,18 @@ See [`docs/PRODUCT.md`](docs/PRODUCT.md) for positioning, moat, V1 scope, and su
 
 **Tagline:** See it. Ask it. Know what to do.
 
+
+## CI / CD
+
+GitHub Actions builds the Spring API and publishes container images to GHCR.
+
+| Image | Notes |
+| --- | --- |
+| `ghcr.io/abhiudayg/else-api:latest` | Latest release tag |
+| `ghcr.io/abhiudayg/else-api:edge` | Continuous build from `main` |
+
+Details: [`docs/CI.md`](docs/CI.md) · local Apple Container: [`deploy/ghcr.md`](deploy/ghcr.md).
+
 ## License
 
 All rights reserved for now — opening the source for collaboration. If you need a specific license (MIT/Apache-2.0), open an issue.

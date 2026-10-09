@@ -1,0 +1,172 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to publish (e.g. v0.1.0). Empty = build current SHA as edge.
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  packages: write
+  attestations: write
+  id-token: write
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/else-api
+
+jobs:
+  publish:
+    name: GHCR image + GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_dispatch' && (inputs.tag != '' && inputs.tag || github.sha) || github.ref }}
+
+      - name: Resolve version
+        id: ver
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && -n "${{ inputs.tag }}" ]]; then
+            TAG="${{ inputs.tag }}"
+            git checkout "$TAG"
+          elif [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            TAG="${GITHUB_REF_NAME}"
+          else
+            TAG=""
+          fi
+          if [[ -n "$TAG" ]]; then
+            V="${TAG#v}"
+            IS_RELEASE=true
+          else
+            V="0.0.0-sha.${GITHUB_SHA::7}"
+            IS_RELEASE=false
+            TAG="edge-${GITHUB_SHA::7}"
+          fi
+          {
+            echo "tag=$TAG"
+            echo "version=$V"
+            echo "is_release=$IS_RELEASE"
+          } >> "$GITHUB_OUTPUT"
+          echo "Publishing tag=$TAG version=$V release=$IS_RELEASE"
+
+      - uses: docker/setup-qemu-action@v3
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=${{ steps.ver.outputs.version }}
+            type=raw,value=latest,enable=${{ steps.ver.outputs.is_release }}
+            type=sha,prefix=sha-,format=short
+            type=raw,value=edge,enable=${{ steps.ver.outputs.is_release == 'false' }}
+
+      - name: Build and push multi-arch
+        id: build
+        uses: docker/build-push-action@v6
+        with:
+          context: backend
+          file: backend/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: |
+            org.opencontainers.image.title=else-api
+            org.opencontainers.image.description=ELSE Spring Boot API
+            org.opencontainers.image.version=${{ steps.ver.outputs.version }}
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          provenance: true
+          sbom: true
+
+      - uses: actions/setup-java@v4
+        if: steps.ver.outputs.is_release == 'true'
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+
+      - name: Package release jar
+        if: steps.ver.outputs.is_release == 'true'
+        working-directory: backend
+        run: |
+          set -euo pipefail
+          mvn -B -DskipTests package
+          mkdir -p ../dist
+          JAR=$(ls target/else-api-*.jar | grep -v original | head -1)
+          cp "$JAR" "../dist/else-api-${{ steps.ver.outputs.version }}.jar"
+          (cd ../dist && sha256sum "else-api-${{ steps.ver.outputs.version }}.jar" > "else-api-${{ steps.ver.outputs.version }}.jar.sha256")
+
+      - name: Create / update GitHub Release
+        if: steps.ver.outputs.is_release == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.ver.outputs.tag }}"
+          V="${{ steps.ver.outputs.version }}"
+          NOTES="$(mktemp)"
+          {
+            echo "## ELSE API v${V}"
+            echo
+            echo "- Image: \`ghcr.io/${{ env.IMAGE_NAME }}:${V}\`"
+            echo "- Image: \`ghcr.io/${{ env.IMAGE_NAME }}:latest\`"
+            echo "- Platforms: \`linux/amd64\`, \`linux/arm64\`"
+            echo
+            echo "### Pull"
+            echo
+            echo '```bash'
+            echo "docker pull ghcr.io/${{ env.IMAGE_NAME }}:${V}"
+            echo "# or Apple Container:"
+            echo "container image pull ghcr.io/${{ env.IMAGE_NAME }}:${V}"
+            echo '```'
+          } > "$NOTES"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/* --clobber
+            gh release edit "$TAG" --notes-file "$NOTES" --title "ELSE API v${V}"
+          else
+            gh release create "$TAG" dist/* \
+              --title "ELSE API v${V}" \
+              --notes-file "$NOTES" \
+              --generate-notes
+          fi
+
+      - name: Summary
+        run: |
+          {
+            echo "### Published ELSE API"
+            echo
+            echo "- Version: \`${{ steps.ver.outputs.version }}\`"
+            echo "- Image tags:"
+            echo "${{ steps.meta.outputs.tags }}" | sed 's/^/- `/;s/$/`/'
+            if [[ "${{ steps.ver.outputs.is_release }}" == "true" ]]; then
+              echo "- [GitHub Release](https://github.com/${{ github.repository }}/releases/tag/${{ steps.ver.outputs.tag }})"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
